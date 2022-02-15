@@ -22,7 +22,7 @@ jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#NO'
 dependencies:
   ihe.iti.basicaudit: 
     uri: http://profiles.ihe.net/ITI/BasicAudit
-    version: 0.1.0
+    version: current
 
 parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
   path-resource:
