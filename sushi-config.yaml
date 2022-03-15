@@ -17,7 +17,7 @@ publisher:
   url: http://healthcaresecprivacy.blogspot.com
   email: JohnMoehrke@gmail.com
 license: CC-BY-SA-4.0
-jurisdiction: 'urn:iso:std:iso:3166#NO'
+jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#578'
 
 #TODO- better to depend on ITI.BasicAudit, but that is not working right now.
 #dependencies:
