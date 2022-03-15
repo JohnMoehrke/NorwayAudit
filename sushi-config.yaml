@@ -19,10 +19,12 @@ publisher:
 license: CC-BY-SA-4.0
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#NO'
 
-dependencies:
-  ihe.iti.basicaudit: 
-    uri: http://profiles.ihe.net/ITI/BasicAudit
-    version: current
+#TODO- better to depend on ITI.BasicAudit, but that is not working right now.
+#dependencies:
+#  ihe.iti.basicaudit: 
+#    id: iheitibasicaudit
+#    uri: http://profiles.ihe.net/ITI/basicaudit/ImplementationGuide/ihe.iti.basicaudit
+#    version: 1.0.1
 
 parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
   path-resource:
@@ -50,6 +52,12 @@ pages:
     generation: markdown
   no.md:
     title: Norway Profiles
+    generation: markdown
+  issues.md:
+    title: Open/Closed Issues
+    generation: markdown
+  testplan.md:
+    title: Test Plan
     generation: markdown
 
 menu:

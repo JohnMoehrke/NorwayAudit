@@ -2,7 +2,7 @@
 
 
 Profile:        SAMLaccessTokenUseComprehensiveNorway
-Parent:         SAMLaccessTokenUseComprehensive
+Parent:         IHE.BasicAudit.SAMLaccessTokenUse.Comprehensive
 Id:             IHE.BasicAudit.SAMLaccessTokenUse.Comprehensive.Norway
 Title:          "Basic AuditEvent pattern for when an activity was authorized by an SAML access token Comprehensive Norway"
 Description:    """
@@ -333,7 +333,7 @@ Description: "These are additionl details about the Patient (Resoruce) mentioned
 
 
 Instance: ex-auditPoke-Norway
-InstanceOf: IHE.BasicAudit.SAMLaccessTokenUse.Comprehensive.Norway
+InstanceOf: SAMLaccessTokenUseComprehensiveNorway
 Title: "Audit Example of a Norway SAML access token of comprehensive"
 Description: """
 Example AuditEvent showing just the Norway comprehensive SAML access token. The event being recorded is a theoretical **poke** (not intended to represent anything useful).
@@ -422,7 +422,7 @@ scope | "patient/Document.read"
 * source.site = "server.example.com"
 * source.observer = Reference(Device/ex-device)
 * source.type = http://terminology.hl7.org/CodeSystem/security-source-type#4 "Application Server"
-* agent[user].type.coding[+] = UserAgentTypes#UserSamlAgent
+* agent[user].type.coding[+] =  https://profiles.ihe.net/ITI/basicaudit/CodeSystem/UserAgentTypes#UserSamlAgent
 * agent[user].type.coding[+] = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IRCP "information recipient"
 * agent[user].who.identifier.value = "05086900124"
 * agent[user].who.identifier.system = "https://sts.sykehuspartner.no"
@@ -433,12 +433,12 @@ scope | "patient/Document.read"
 * agent[user].requestor = true
 * agent[user].extension[assuranceLevel].valueCodeableConcept = https://begrep.difi.no/Felles/sikkerhetsnivaa#4
 //TODO This throws an error in validation that I can't figure out https://chat.fhir.org/#narrow/stream/215610-shorthand/topic/slicing.20an.20extension.20on.20a.20slice
-* agent[user].extension[otherId][subject-id].valueReference.identifier.type = OtherIdentifierTypes#SAML-subject-id
-* agent[user].extension[otherId][subject-id].valueReference.identifier.value = "JohnDoe"
-* agent[user].extension[otherId][npi].valueReference.identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#NPI
-* agent[user].extension[otherId][npi].valueReference.identifier.value = "1234567@myNPIregistry.example.org"
-* agent[user].extension[otherId][provider-id].valueReference.identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#PRN
-* agent[user].extension[otherId][provider-id].valueReference.identifier.value = "JohnD"
+* agent[user].extension[otherId][+].valueReference.identifier.type = https://profiles.ihe.net/ITI/basicaudit/CodeSystem/OtherIdentifierTypes#SAML-subject-id
+* agent[user].extension[otherId][=].valueReference.identifier.value = "JohnDoe"
+* agent[user].extension[otherId][+].valueReference.identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#NPI
+* agent[user].extension[otherId][=].valueReference.identifier.value = "1234567@myNPIregistry.example.org"
+* agent[user].extension[otherId][+].valueReference.identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#PRN
+* agent[user].extension[otherId][=].valueReference.identifier.value = "JohnD"
 
 * agent[user].role[+] = urn:oid:2.16.578.1.12.4.3.1.40.5.1#Overlege "Overlege"
 * agent[user].role[+] = urn:oid:2.16.578.1.12.4.3.1.40.5.3#1035
