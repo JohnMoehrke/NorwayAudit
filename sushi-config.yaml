@@ -4,11 +4,11 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: johnmoehrke.basicaudit.no
 canonical: http://johnmoehrke.github.io/basicaudit.no
-version: 0.1.0
+version: 0.1.0-current
 name: JohnMoehrkeBasicAuditNo
 title: "Norway constraints on IHE BasicAudit"
 description: Norway further refinements and embelshments to BasicAudit
-status: draft
+status: active
 fhirVersion: 4.0.1
 copyrightYear: 2021+
 releaseLabel: ci-build
@@ -21,7 +21,8 @@ license: CC-BY-SA-4.0
 #jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#NOR'
 #jurisdiction: 'urn:iso:std:iso:3166#578'
 #jurisdiction: 'urn:iso:std:iso:3166#NOR'
-jurisdiction: 'urn:iso:std:iso:3166#NO'
+#jurisdiction: 'urn:iso:std:iso:3166#NO'
+jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
 #TODO- better to depend on ITI.BasicAudit, but that is not working right now.
 #dependencies:
