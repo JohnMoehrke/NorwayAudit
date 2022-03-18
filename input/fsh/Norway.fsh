@@ -405,7 +405,6 @@ Key | example value
 homecommunity:id | 2.16.578.1.12.4.1.7.1.1
 country | NO
 scope | "patient/Document.read"
-
 """
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
 * type = DCM#110100 "Application Activity"
