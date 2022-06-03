@@ -1,7 +1,7 @@
 
 
 Extension: OtherIdName
-Id: IHE-otherIdName
+Id: NO-otherIdName
 Title: "AuditEvent.agent other identifiers name"
 Description: "Extension to be used within IHE-otherId to carry the name of the identifier."
 * value[x] only string
@@ -15,120 +15,7 @@ Title:          "Basic AuditEvent pattern for when an activity was authorized by
 Description:    """
 A basic AuditEvent profile for when an activity was authorized by an SAML access token. This profile is expected to be used with some other detail that explains the activity. This profile only covers the SAML access token.
 
-**Builds upon the Comprehensive**
-- *italic font* used for those elements defined in IHE.BasicAudit core
-
-Norway SAML attributes | AuditEvent element 
-----|---- 
-**subject** | **user**
-subject:id | *AuditEvent.agent[user].who.identifier.value*
-Subject:name | *AuditEvent.agent[user].who.display*
-subject:system | *AuditEvent.agent[user].who.identifier.system*
-subject:assigner | *AuditEvent.agent[user].who.identifier.assigner*
-**application-session** | 
-subject:application-session:id | AuditEvent.agent[user].extension[otherId][application-session].identifier.value
-subject:application-session:name | AuditEvent.agent[user].extension[otherId][application-session].name
-subject:application-session:system | AuditEvent.agent[user].extension[otherId][application-session].identifier.system
-subject:application-session:assigner | N/A eller ekstensjon
-**qualifications-roles** |
-subject:qualification-role:id | AuditEvent.agent[user].role.code
-subject:qualification-role:name | AuditEvent.agent[user].role.display
-subject:qualification-role:system | AuditEvent.agent[user].role.system
-subject:qualification-role:assigner | N/A eller ekstensjon
-**structural-roles** |  
-subject:role:id | AuditEvent.agent[user].role.code
-subject:role:name | AuditEvent.agent[user].role.display
-subject:role:system | AuditEvent.agent[user].role.system
-subject:role:assigner | N/A eller ekstensjon
-**functional-roles** | 
-subject:functional-role:id | AuditEvent.agent[user].role.code
-subject:functional-role:name | AuditEvent.agent[user].role.display
-subject:functional-role:system | AuditEvent.agent[user].role.system
-subject:functional-role:assigner | N/A eller ekstensjon
-**application-roles** | 
-subject:application-role-id | AuditEvent.agent[user].role.code
-subject:application-role-name | AuditEvent.agent.[user].role.display
-subject:application-role-system | AuditEvent.agent[user].role.system
-subject:application-role-assigner | N/A eller ekstensjon
-**healthcareservice** | 
-healthcareservice:id | AuditEvent.purposeOfEvent.coding.code
-healthcareservice:name | AuditEvent.purposeOfEvent.coding.display
-healthcareservice:system | AuditEvent.purposeOfEvent.coding.system
-healthcareservice:assigner | 
-**PurposeUse** | 
-purpose:id | AuditEvent.purposeOfEvent.coding.code
-purpose:name | AuditEvent.purposeOfEvent.coding.display
-purpose:system | AuditEvent.purposeOfEvent.coding.system
-purpose:description | AuditEvent.purposeOfEvent.text
-purpose:reason | ????
-**PurposeUse-local** | 
-purpose-local:id | AuditEvent.agent[user].purposeOUse.coding.code
-purpose-local:name | AuditEvent.agent[user].purposeOfUse.coding.display
-purpose-local:system | AuditEvent.agent[user].purposeOfUse.coding.system
-purpose-local:description | AuditEvent.agent[user].purposeOfUse.text
-purpose-local:reason | ????
-purpose-local:userSelected | AuditEvent.agent.purposeOfUse.coding.userSelected
-**qualifications** | **hso:subject:qualification:id**
-subject:qualification:id | AuditEvent.agent[user].extension[otherId][qualification].identifier.value
-subject:qualification:name | AuditEvent.agent[user].extension[otherId][qualification].name
-subject:qualification:system | AuditEvent.agent[user].extension[otherId][qualification].identifier.system
-subject:qualification:assigner | AuditEvent.agent[user].extension[otherId][qualification].identifier.assigner
-**nationalidentifiers** | **hso:subject:national-identifier:id**
-subject:national-identifier:id | AuditEvent.agent[user].extension[otherId][personal].identifier.value
-subject:national-identifier:name | AuditEvent.agent[user].extension[otherId][personal].name
-subject:national-identifier:system | AuditEvent.agent[user].extension[otherId][personal].identifier.system
-subject:national-identifier:assigner | AuditEvent.agent[user].extension[otherId][personal].identifier.assigner
-**subject-assurance** | 
-subject:assurance-level:id | *AuditEvent.agent[user].extension[assuranceLevel].coding.code*
-subject:assurance-level:name | *AuditEvent.agent[user].extension[assuranceLevel].coding.display*
-subject:assurance-level:system | *AuditEvent.agent[user].extension[assuranceLevel].coding.system*
-subject:assurance-level:assigner | 
-**organization** | 
-subject:organization-id:  | *AuditEvent.agent[userorg].who.identifier.value*
-subject:organization-name | *AuditEvent.agent[userorg].who.display*
-subject:organization-system | *AuditEvent.agent[userorg].who.identifier.system*
-subject:organization-assigner | *AuditEvent.agent[userorg].who.identifier.assigner*
-**child-organization** | 
-subject:child-organization-id | AuditEvent.agent[user-child-org].who.identifier.value
-subject:child-organization-name | AuditEvent.agent[user-child-org]who.display
-subject:child-organization-system | AuditEvent.agent[user-child-org].who.identifier.system
-subject:child-organization-assigner | AuditEvent.agent[user-child-org].who.identifier.assigner
-**facility** | 
-subject:facility-id | AuditEvent.agent[user-facility].who.identifier.value
-subject:facility-name | AuditEvent.agent[user-facility].who.display
-subject:facility-system | AuditEvent.agent[user-facility].who.identifier.system
-subject:facility-assigner | AuditEvent.agent[user-facility].who.identifier.assigner
-**department** | 
-subject:department:id | AuditEvent.agent[user-department].who.identifier.value
-subject:department:name | AuditEvent.agent[user-department].who.display
-subject:department:requester-code | 
-subject:department:system | AuditEvent.agent[user-department].identifier.system
-subject:department:assigner | AuditEvent.agent[user-department].identifier.assigner
-**sub-department** | 
-subject:sub-department:id | AuditEvent.agent[user-sub-department].who.identifier.value
-subject:sub-department:name | AuditEvent.agent[user-sub-department].who.display
-subject:sub-department:system | AuditEvent.agent[user-sub-department].identifier.system
-subject:sub-department:assigner | AuditEvent.agent[user-sub-department].identifier.assigner
-**unit** | 
-subject:unit:id | AuditEvent.agent[user-unit].who.identifier.value
-subject:unit:name | AuditEvent.agent[user-unit].who.display
-subject:unit:system | AuditEvent.agent[user-unit].identifier.system
-subject:unit:assigner | AuditEvent.agent[user-unit].identifier.assigner
-**Patient** | 
-resource:id | *AuditEvent.entity[patient].what.identifier.value*
-resource:name | *AuditEvent.entity[patient].what.display*
-resource:system | *AuditEvent.entity[patient].what.identifier.system*
-**Patient-child-org** | 
-resource:child-organization:id  | AuditEvent.entity[patient].detail[child-organization-id]
-resource:child-organization:name | AuditEvent.entity[patient].detail[child-organization-name]
-resource:child-organization:system | AuditEvent.entity[patient].detail[child-organization-system]
-**Patient-facility** | 
-resource:facility:id | AuditEvent.entity[patient].detail[facility-id]
-resource:facility:name | AuditEvent.entity[patient].detail[facility-name]
-resource:facility:system | AuditEvent.entity[patient].detail[facility-system]
-**Patient-consent** | 
-resource:patient-consent-directive  | *AuditEvent.agent[consent].what*
-resource:patient-consent-directive-type |
+**Builds upon the IHE BALP Comprehensive**
 """
 * purposeOfEvent 1..* MS
 * purposeOfEvent ^short = "saml hso:purpose and healthcareservice"
@@ -146,7 +33,6 @@ resource:patient-consent-directive-type |
 * agent[user].purposeOfUse.coding.display ^short = "SAML hso:purpose-local:name"
 * agent[user].purposeOfUse.coding.system ^short = "SAML hso:purpose-local:system"
 // setup slice for qualifications
-* agent[user].extension[otherId].value[x].extension contains OtherIdName named otherIdName 0..1 MS
 * agent[user].extension[otherId] ^slicing.discriminator.type = #pattern
 * agent[user].extension[otherId] ^slicing.discriminator.path = "$this.value.ofType(Reference).identifier.type"
 * agent[user].extension[otherId] ^slicing.rules = #open
@@ -159,6 +45,7 @@ resource:patient-consent-directive-type |
 * agent[user].extension[otherId][qualifications].valueIdentifier.system ^short = "subject:qualification:system"
 * agent[user].extension[otherId][qualifications].valueIdentifier.value 1..1 MS
 * agent[user].extension[otherId][qualifications].valueIdentifier.value ^short = "subject:qualification:id"
+* agent[user].extension[otherId][qualifications].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
 * agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString 1..1 MS
 * agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName] ^short = "subject:qualification:name"
 * agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value 1..1 MS
@@ -169,6 +56,7 @@ resource:patient-consent-directive-type |
 * agent[user].extension[otherId][personal].valueIdentifier.system ^short = "subject:national-identifier:system"
 * agent[user].extension[otherId][personal].valueIdentifier.value 1..1 MS
 * agent[user].extension[otherId][personal].valueIdentifier.value ^short = "subject:national-identifier:id"
+* agent[user].extension[otherId][personal].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
 * agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString 1..1 MS
 * agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName] ^short = "subject:national-identifier:name"
 * agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value 1..1 MS
@@ -440,7 +328,7 @@ scope | "patient/Document.read"
 * agent[user].requestor = true
 * agent[user].extension[assuranceLevel].valueCodeableConcept = https://begrep.difi.no/Felles/sikkerhetsnivaa#4
 //TODO This throws an error in validation that I can't figure out https://chat.fhir.org/#narrow/stream/215610-shorthand/topic/slicing.20an.20extension.20on.20a.20slice
-* agent[user].extension[otherId][+].valueIidentifier.type = https://profiles.ihe.net/ITI/basicaudit/CodeSystem/OtherIdentifierTypes#SAML-subject-id
+* agent[user].extension[otherId][+].valueIdentifier.type = https://profiles.ihe.net/ITI/basicaudit/CodeSystem/OtherIdentifierTypes#SAML-subject-id
 * agent[user].extension[otherId][=].valueIdentifier.value = "JohnDoe"
 * agent[user].extension[otherId][+].valueIdentifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#NPI
 * agent[user].extension[otherId][=].valueIdentifier.value = "1234567@myNPIregistry.example.org"
@@ -461,12 +349,12 @@ scope | "patient/Document.read"
 * agent[user].extension[otherId][qualifications].valueIdentifier.type = NorwayIdentifierTypes#qualification
 * agent[user].extension[otherId][qualifications].valueIdentifier.system = "urn:oid:2.16.578.1.12.4.1.4.4"
 * agent[user].extension[otherId][qualifications].valueIdentifier.value = "222200068"
-* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString = "BEN PSA REDDIK"
+//todo * agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString = "BEN PSA REDDIK"
 * agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value = "https://register.helsedirektoratet.no/hpr"
 * agent[user].extension[otherId][personal].valueIdentifier.type = NorwayIdentifierTypes#national-identifier
 * agent[user].extension[otherId][personal].valueIdentifier.system = "urn:oid:2.16.578.1.12.4.1.4.1"
 * agent[user].extension[otherId][personal].valueIdentifier.value = "05086900124"
-* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString = "BEN PSA REDDIK"
+//todo * agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString = "BEN PSA REDDIK"
 * agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value = "https://www.skatteetaten.no/person/folkeregister/"
 * agent[user].extension[otherId][application-session].valueIdentifier.type = NorwayIdentifierTypes#application-session
 * agent[user].extension[otherId][application-session].valueIdentifier.system = "http://dips.com/session_id_hash"
