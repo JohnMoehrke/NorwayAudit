@@ -1,5 +1,12 @@
 
 
+Extension: OtherIdName
+Id: IHE-otherIdName
+Title: "AuditEvent.agent other identifiers name"
+Description: "Extension to be used within IHE-otherId to carry the name of the identifier."
+* value[x] only string
+* valueString 1..1
+
 
 Profile:        SAMLaccessTokenUseComprehensiveNorway
 Parent:         IHE.BasicAudit.SAMLaccessTokenUse.Comprehensive
@@ -139,6 +146,7 @@ resource:patient-consent-directive-type |
 * agent[user].purposeOfUse.coding.display ^short = "SAML hso:purpose-local:name"
 * agent[user].purposeOfUse.coding.system ^short = "SAML hso:purpose-local:system"
 // setup slice for qualifications
+* agent[user].extension[otherId].value[x].extension contains OtherIdName named otherIdName 0..1 MS
 * agent[user].extension[otherId] ^slicing.discriminator.type = #pattern
 * agent[user].extension[otherId] ^slicing.discriminator.path = "$this.value.ofType(Reference).identifier.type"
 * agent[user].extension[otherId] ^slicing.rules = #open
@@ -146,31 +154,31 @@ resource:patient-consent-directive-type |
 	qualifications 0..1 and
 	personal 0..1 and
 	application-session 0..1
-* agent[user].extension[otherId][qualifications].valueReference.identifier.type = NorwayIdentifierTypes#qualification
-* agent[user].extension[otherId][qualifications].valueReference.identifier.system 1..1 MS
-* agent[user].extension[otherId][qualifications].valueReference.identifier.system ^short = "subject:qualification:system"
-* agent[user].extension[otherId][qualifications].valueReference.identifier.value 1..1 MS
-* agent[user].extension[otherId][qualifications].valueReference.identifier.value ^short = "subject:qualification:id"
-* agent[user].extension[otherId][qualifications].valueReference.display 1..1 MS
-* agent[user].extension[otherId][qualifications].valueReference.display ^short = "subject:qualification:name"
-* agent[user].extension[otherId][qualifications].valueReference.identifier.assigner.identifier.value 1..1 MS
-* agent[user].extension[otherId][qualifications].valueReference.identifier.assigner.identifier.value ^short = "subject:qualification:assigner"
+* agent[user].extension[otherId][qualifications].valueIdentifier.type = NorwayIdentifierTypes#qualification
+* agent[user].extension[otherId][qualifications].valueIdentifier.system 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.system ^short = "subject:qualification:system"
+* agent[user].extension[otherId][qualifications].valueIdentifier.value 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.value ^short = "subject:qualification:id"
+* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName] ^short = "subject:qualification:name"
+* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value ^short = "subject:qualification:assigner"
 * agent[user].extension[otherId][qualifications] ^short = "subject:qualification"
-* agent[user].extension[otherId][personal].valueReference.identifier.type = NorwayIdentifierTypes#national-identifier
-* agent[user].extension[otherId][personal].valueReference.identifier.system 1..1 MS
-* agent[user].extension[otherId][personal].valueReference.identifier.system ^short = "subject:national-identifier:system"
-* agent[user].extension[otherId][personal].valueReference.identifier.value 1..1 MS
-* agent[user].extension[otherId][personal].valueReference.identifier.value ^short = "subject:national-identifier:id"
-* agent[user].extension[otherId][personal].valueReference.display 1..1 MS
-* agent[user].extension[otherId][personal].valueReference.display ^short = "subject:national-identifier:name"
-* agent[user].extension[otherId][personal].valueReference.identifier.assigner.identifier.value 1..1 MS
-* agent[user].extension[otherId][personal].valueReference.identifier.assigner.identifier.value ^short = "subject:national-identifier:assigner"
+* agent[user].extension[otherId][personal].valueIdentifier.type = NorwayIdentifierTypes#national-identifier
+* agent[user].extension[otherId][personal].valueIdentifier.system 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.system ^short = "subject:national-identifier:system"
+* agent[user].extension[otherId][personal].valueIdentifier.value 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.value ^short = "subject:national-identifier:id"
+* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName] ^short = "subject:national-identifier:name"
+* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value ^short = "subject:national-identifier:assigner"
 * agent[user].extension[otherId][personal] ^short = "subject:national-identifier"
-* agent[user].extension[otherId][application-session].valueReference.identifier.type = NorwayIdentifierTypes#application-session
-* agent[user].extension[otherId][application-session].valueReference.identifier.system 1..1 MS
-* agent[user].extension[otherId][application-session].valueReference.identifier.system ^short = "subject:appplication-session:system"
-* agent[user].extension[otherId][application-session].valueReference.identifier.value 1..1 MS
-* agent[user].extension[otherId][application-session].valueReference.identifier.value ^short = "subject:application-session:id"
+* agent[user].extension[otherId][application-session].valueIdentifier.type = NorwayIdentifierTypes#application-session
+* agent[user].extension[otherId][application-session].valueIdentifier.system 1..1 MS
+* agent[user].extension[otherId][application-session].valueIdentifier.system ^short = "subject:appplication-session:system"
+* agent[user].extension[otherId][application-session].valueIdentifier.value 1..1 MS
+* agent[user].extension[otherId][application-session].valueIdentifier.value ^short = "subject:application-session:id"
 * agent[user].extension[otherId][application-session] ^short = "subject:application-session"
 * agent[user].extension[otherId][application-session] ^definition = "The application-session is a process identification value for the user session. It is used to coorelate the activities to that session."
 
@@ -450,19 +458,19 @@ scope | "patient/Document.read"
 * agent[userorg].who.identifier.assigner.identifier.value = "Brønnøysundregistrene"
 * agent[userorg].requestor = false
 
-* agent[user].extension[otherId][qualifications].valueReference.identifier.type = NorwayIdentifierTypes#qualification
-* agent[user].extension[otherId][qualifications].valueReference.identifier.system = "urn:oid:2.16.578.1.12.4.1.4.4"
-* agent[user].extension[otherId][qualifications].valueReference.identifier.value = "222200068"
-* agent[user].extension[otherId][qualifications].valueReference.display = "BEN PSA REDDIK"
-* agent[user].extension[otherId][qualifications].valueReference.identifier.assigner.identifier.value = "https://register.helsedirektoratet.no/hpr"
-* agent[user].extension[otherId][personal].valueReference.identifier.type = NorwayIdentifierTypes#national-identifier
-* agent[user].extension[otherId][personal].valueReference.identifier.system = "urn:oid:2.16.578.1.12.4.1.4.1"
-* agent[user].extension[otherId][personal].valueReference.identifier.value = "05086900124"
-* agent[user].extension[otherId][personal].valueReference.display = "BEN PSA REDDIK"
-* agent[user].extension[otherId][personal].valueReference.identifier.assigner.identifier.value = "https://www.skatteetaten.no/person/folkeregister/"
-* agent[user].extension[otherId][application-session].valueReference.identifier.type = NorwayIdentifierTypes#application-session
-* agent[user].extension[otherId][application-session].valueReference.identifier.system = "http://dips.com/session_id_hash"
-* agent[user].extension[otherId][application-session].valueReference.identifier.value = "3840231262"
+* agent[user].extension[otherId][qualifications].valueIdentifier.type = NorwayIdentifierTypes#qualification
+* agent[user].extension[otherId][qualifications].valueIdentifier.system = "urn:oid:2.16.578.1.12.4.1.4.4"
+* agent[user].extension[otherId][qualifications].valueIdentifier.value = "222200068"
+* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString = "BEN PSA REDDIK"
+* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value = "https://register.helsedirektoratet.no/hpr"
+* agent[user].extension[otherId][personal].valueIdentifier.type = NorwayIdentifierTypes#national-identifier
+* agent[user].extension[otherId][personal].valueIdentifier.system = "urn:oid:2.16.578.1.12.4.1.4.1"
+* agent[user].extension[otherId][personal].valueIdentifier.value = "05086900124"
+* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString = "BEN PSA REDDIK"
+* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value = "https://www.skatteetaten.no/person/folkeregister/"
+* agent[user].extension[otherId][application-session].valueIdentifier.type = NorwayIdentifierTypes#application-session
+* agent[user].extension[otherId][application-session].valueIdentifier.system = "http://dips.com/session_id_hash"
+* agent[user].extension[otherId][application-session].valueIdentifier.value = "3840231262"
 
 * agent[user-child-org].type = NorwayAgentTypes#user-child-org
 * agent[user-child-org].who.identifier.value = "874716782"

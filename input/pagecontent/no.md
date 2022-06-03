@@ -12,8 +12,8 @@ Subject:name | *AuditEvent.agent[user].who.display*
 subject:system | *AuditEvent.agent[user].who.identifier.system*
 subject:assigner | *AuditEvent.agent[user].who.identifier.assigner*
 **application-session** | 
-subject:application-session:id | AuditEvent.agent[user].extension[otherId][application-session].identifier.value
-subject:application-session:name | AuditEvent.agent[user].extension[otherId][application-session].name
+subject:application-session:id | AuditEvent.agent[user].extension[otherId][application-session].value
+subject:application-session:name | AuditEvent.agent[user].extension[otherId][application-session].extension[otherIdName].value
 subject:application-session:system | AuditEvent.agent[user].extension[otherId][application-session].identifier.system
 subject:application-session:assigner | N/A eller ekstensjon
 **qualifications-roles** |
@@ -55,15 +55,15 @@ purpose-local:description | AuditEvent.agent[user].purposeOfUse.text
 purpose-local:reason | ?
 purpose-local:userSelected | AuditEvent.agent.purposeOfUse.coding.userSelected
 **qualifications** | 
-subject:qualification:id | AuditEvent.agent[user].extension[otherId][qualification].identifier.value
-subject:qualification:name | AuditEvent.agent[user].extension[otherId][qualification].name
-subject:qualification:system | AuditEvent.agent[user].extension[otherId][qualification].identifier.system
-subject:qualification:assigner | AuditEvent.agent[user].extension[otherId][qualification].identifier.assigner
+subject:qualification:id | AuditEvent.agent[user].extension[otherId][qualification].value
+subject:qualification:name | AuditEvent.agent[user].extension[otherId][qualification].extension[otherIdName].value
+subject:qualification:system | AuditEvent.agent[user].extension[otherId][qualification].system
+subject:qualification:assigner | AuditEvent.agent[user].extension[otherId][qualification].assigner
 **nationalidentifiers** | 
-subject:national-identifier:id | AuditEvent.agent[user].extension[otherId][personal].identifier.value
-subject:national-identifier:name | AuditEvent.agent[user].extension[otherId][personal].name
-subject:national-identifier:system | AuditEvent.agent[user].extension[otherId][personal].identifier.system
-subject:national-identifier:assigner | AuditEvent.agent[user].extension[otherId][personal].identifier.assigner
+subject:national-identifier:id | AuditEvent.agent[user].extension[otherId][personal].value
+subject:national-identifier:name | AuditEvent.agent[user].extension[otherId][personal].extension[otherIdName].value
+subject:national-identifier:system | AuditEvent.agent[user].extension[otherId][personal].system
+subject:national-identifier:assigner | AuditEvent.agent[user].extension[otherId][personal].assigner
 **subject-assurance** | 
 subject:assurance-level:id | AuditEvent.agent[user].extension[assurance-level].coding.code
 subject:assurance-level:name | AuditEvent.agent[user].extension[assurance-level].coding.display

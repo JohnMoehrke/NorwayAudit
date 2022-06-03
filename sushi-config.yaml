@@ -29,11 +29,11 @@ jurisdiction: urn:iso:std:iso:3166#NO
 #jurisdiction: urn:iso:std:iso:3166#CA
 
 #TODO- better to depend on ITI.BasicAudit, but that is not working right now.
-#dependencies:
-#  ihe.iti.basicaudit: 
-#    id: iheitibasicaudit
-#    uri: http://profiles.ihe.net/ITI/basicaudit/ImplementationGuide/ihe.iti.basicaudit
-#    version: 1.0.1
+dependencies:
+  ihe.iti.balp: 
+    id: iheitibasicaudit
+    uri: https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp
+    version: 1.1.0
 
 parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
   path-resource:
