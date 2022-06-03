@@ -46,7 +46,7 @@ A basic AuditEvent profile for when an activity was authorized by an SAML access
 * agent[user].extension[otherId][qualifications].valueIdentifier.value 1..1 MS
 * agent[user].extension[otherId][qualifications].valueIdentifier.value ^short = "subject:qualification:id"
 * agent[user].extension[otherId][qualifications].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
-* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString 1..1 MS
+//* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString 0..1 MS
 * agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName] ^short = "subject:qualification:name"
 * agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value 1..1 MS
 * agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value ^short = "subject:qualification:assigner"
@@ -57,7 +57,7 @@ A basic AuditEvent profile for when an activity was authorized by an SAML access
 * agent[user].extension[otherId][personal].valueIdentifier.value 1..1 MS
 * agent[user].extension[otherId][personal].valueIdentifier.value ^short = "subject:national-identifier:id"
 * agent[user].extension[otherId][personal].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
-* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString 1..1 MS
+//* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString 0..1 MS
 * agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName] ^short = "subject:national-identifier:name"
 * agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value 1..1 MS
 * agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value ^short = "subject:national-identifier:assigner"
