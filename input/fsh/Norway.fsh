@@ -1,7 +1,6 @@
-
+//Alias: $otherId = https://profiles.ihe.net/ITI/BALP/StructureDefinition/ihe-otherId
 
 Extension: OtherIdName
-Id: NO-otherIdName
 Title: "AuditEvent.agent other identifiers name"
 Description: "Extension to be used within IHE-otherId to carry the name of the identifier."
 * value[x] only string
@@ -32,47 +31,8 @@ A basic AuditEvent profile for when an activity was authorized by an SAML access
 * agent[user].purposeOfUse.coding.code ^short = "SAML hso:purpose-local:id"
 * agent[user].purposeOfUse.coding.display ^short = "SAML hso:purpose-local:name"
 * agent[user].purposeOfUse.coding.system ^short = "SAML hso:purpose-local:system"
-// setup slice for qualifications
-* agent[user].extension[otherId] ^slicing.discriminator.type = #pattern
-* agent[user].extension[otherId] ^slicing.discriminator.path = "$this.value.ofType(Reference).identifier.type"
-* agent[user].extension[otherId] ^slicing.rules = #open
-* agent[user].extension[otherId] contains 
-	qualifications 0..1 and
-	personal 0..1 and
-	application-session 0..1
-* agent[user].extension[otherId][qualifications].valueIdentifier.type = NorwayIdentifierTypes#qualification
-* agent[user].extension[otherId][qualifications].valueIdentifier.system 1..1 MS
-* agent[user].extension[otherId][qualifications].valueIdentifier.system ^short = "subject:qualification:system"
-* agent[user].extension[otherId][qualifications].valueIdentifier.value 1..1 MS
-* agent[user].extension[otherId][qualifications].valueIdentifier.value ^short = "subject:qualification:id"
-* agent[user].extension[otherId][qualifications].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
-//* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString 0..1 MS
-* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName] ^short = "subject:qualification:name"
-* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value 1..1 MS
-* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value ^short = "subject:qualification:assigner"
-* agent[user].extension[otherId][qualifications] ^short = "subject:qualification"
-* agent[user].extension[otherId][personal].valueIdentifier.type = NorwayIdentifierTypes#national-identifier
-* agent[user].extension[otherId][personal].valueIdentifier.system 1..1 MS
-* agent[user].extension[otherId][personal].valueIdentifier.system ^short = "subject:national-identifier:system"
-* agent[user].extension[otherId][personal].valueIdentifier.value 1..1 MS
-* agent[user].extension[otherId][personal].valueIdentifier.value ^short = "subject:national-identifier:id"
-* agent[user].extension[otherId][personal].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
-//* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString 0..1 MS
-* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName] ^short = "subject:national-identifier:name"
-* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value 1..1 MS
-* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value ^short = "subject:national-identifier:assigner"
-* agent[user].extension[otherId][personal] ^short = "subject:national-identifier"
-* agent[user].extension[otherId][application-session].valueIdentifier.type = NorwayIdentifierTypes#application-session
-* agent[user].extension[otherId][application-session].valueIdentifier.system 1..1 MS
-* agent[user].extension[otherId][application-session].valueIdentifier.system ^short = "subject:appplication-session:system"
-* agent[user].extension[otherId][application-session].valueIdentifier.value 1..1 MS
-* agent[user].extension[otherId][application-session].valueIdentifier.value ^short = "subject:application-session:id"
-* agent[user].extension[otherId][application-session] ^short = "subject:application-session"
-* agent[user].extension[otherId][application-session] ^definition = "The application-session is a process identification value for the user session. It is used to coorelate the activities to that session."
 
-* agent ^slicing.discriminator.type = #pattern
-* agent ^slicing.discriminator.path = "type"
-* agent ^slicing.rules = #open
+//extending the agent slicing from BasicAudit
 * agent contains 
 	user-facility 0..1 and
 	user-child-org 0..1 and
@@ -179,9 +139,48 @@ A basic AuditEvent profile for when an activity was authorized by an SAML access
 * agent[user-unit].network 0..0 // users are not network devices
 * agent[user-unit].purposeOfUse 0..0
 
-* entity ^slicing.discriminator.type = #pattern
+// extending the otherId slicing from BasicAudit
+// TODO, for some reason this doesn't work for extensions like it does for simple slices
+* agent[user].extension[otherId] ^slicing.discriminator.type = #value
+* agent[user].extension[otherId] ^slicing.discriminator.path = "type"
+* agent[user].extension[otherId] ^slicing.rules = #open
+* agent[user].extension[otherId] contains 
+	qualifications 0..1 and
+	personal 0..1 and
+	application-session 0..1
+* agent[user].extension[otherId][qualifications].valueIdentifier.type = NorwayIdentifierTypes#qualification
+* agent[user].extension[otherId][qualifications].valueIdentifier.system 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.system ^short = "subject:qualification:system"
+* agent[user].extension[otherId][qualifications].valueIdentifier.value 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.value ^short = "subject:qualification:id"
+* agent[user].extension[otherId][qualifications].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
+//* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName].valueString 0..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.extension[otherIdName] ^short = "subject:qualification:name"
+* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value 1..1 MS
+* agent[user].extension[otherId][qualifications].valueIdentifier.assigner.identifier.value ^short = "subject:qualification:assigner"
+* agent[user].extension[otherId][qualifications] ^short = "subject:qualification"
+* agent[user].extension[otherId][personal].valueIdentifier.type = NorwayIdentifierTypes#national-identifier
+* agent[user].extension[otherId][personal].valueIdentifier.system 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.system ^short = "subject:national-identifier:system"
+* agent[user].extension[otherId][personal].valueIdentifier.value 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.value ^short = "subject:national-identifier:id"
+* agent[user].extension[otherId][personal].valueIdentifier.extension contains OtherIdName named otherIdName 0..1 MS
+//* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName].valueString 0..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.extension[otherIdName] ^short = "subject:national-identifier:name"
+* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value 1..1 MS
+* agent[user].extension[otherId][personal].valueIdentifier.assigner.identifier.value ^short = "subject:national-identifier:assigner"
+* agent[user].extension[otherId][personal] ^short = "subject:national-identifier"
+* agent[user].extension[otherId][application-session].valueIdentifier.type = NorwayIdentifierTypes#application-session
+* agent[user].extension[otherId][application-session].valueIdentifier.system 1..1 MS
+* agent[user].extension[otherId][application-session].valueIdentifier.system ^short = "subject:appplication-session:system"
+* agent[user].extension[otherId][application-session].valueIdentifier.value 1..1 MS
+* agent[user].extension[otherId][application-session].valueIdentifier.value ^short = "subject:application-session:id"
+* agent[user].extension[otherId][application-session] ^short = "subject:application-session"
+* agent[user].extension[otherId][application-session] ^definition = "The application-session is a process identification value for the user session. It is used to coorelate the activities to that session."
+
+* entity ^slicing.discriminator.type = #type
 * entity ^slicing.discriminator.path = "type"
-* entity ^slicing.rules = #closed
+* entity ^slicing.rules = #open
 * entity 1..*
 * entity contains 
     patient 1..1 
