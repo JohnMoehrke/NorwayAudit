@@ -440,12 +440,12 @@ scope | "patient/Document.read"
 * agent[user].requestor = true
 * agent[user].extension[assuranceLevel].valueCodeableConcept = https://begrep.difi.no/Felles/sikkerhetsnivaa#4
 //TODO This throws an error in validation that I can't figure out https://chat.fhir.org/#narrow/stream/215610-shorthand/topic/slicing.20an.20extension.20on.20a.20slice
-* agent[user].extension[otherId][+].valueReference.identifier.type = https://profiles.ihe.net/ITI/basicaudit/CodeSystem/OtherIdentifierTypes#SAML-subject-id
-* agent[user].extension[otherId][=].valueReference.identifier.value = "JohnDoe"
-* agent[user].extension[otherId][+].valueReference.identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#NPI
-* agent[user].extension[otherId][=].valueReference.identifier.value = "1234567@myNPIregistry.example.org"
-* agent[user].extension[otherId][+].valueReference.identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#PRN
-* agent[user].extension[otherId][=].valueReference.identifier.value = "JohnD"
+* agent[user].extension[otherId][+].valueIidentifier.type = https://profiles.ihe.net/ITI/basicaudit/CodeSystem/OtherIdentifierTypes#SAML-subject-id
+* agent[user].extension[otherId][=].valueIdentifier.value = "JohnDoe"
+* agent[user].extension[otherId][+].valueIdentifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#NPI
+* agent[user].extension[otherId][=].valueIdentifier.value = "1234567@myNPIregistry.example.org"
+* agent[user].extension[otherId][+].valueIdentifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#PRN
+* agent[user].extension[otherId][=].valueIdentifier.value = "JohnD"
 
 * agent[user].role[+] = urn:oid:2.16.578.1.12.4.3.1.40.5.1#Overlege "Overlege"
 * agent[user].role[+] = urn:oid:2.16.578.1.12.4.3.1.40.5.3#1035
