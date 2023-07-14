@@ -3,6 +3,8 @@
 Extension: OtherIdName
 Title: "AuditEvent.agent other identifiers name"
 Description: "Extension to be used within IHE-otherId to carry the name of the identifier."
+* ^context[+].type = #element
+* ^context[=].expression = "AuditEvent.agent"
 * value[x] only string
 * valueString 1..1
 
@@ -140,10 +142,6 @@ A basic AuditEvent profile for when an activity was authorized by an SAML access
 * agent[user-unit].purposeOfUse 0..0
 
 // extending the otherId slicing from BasicAudit
-// TODO, for some reason this doesn't work for extensions like it does for simple slices
-* agent[user].extension[otherId] ^slicing.discriminator.type = #value
-* agent[user].extension[otherId] ^slicing.discriminator.path = "type"
-* agent[user].extension[otherId] ^slicing.rules = #open
 * agent[user].extension[otherId] contains 
 	qualifications 0..1 and
 	personal 0..1 and
@@ -178,9 +176,9 @@ A basic AuditEvent profile for when an activity was authorized by an SAML access
 * agent[user].extension[otherId][application-session] ^short = "subject:application-session"
 * agent[user].extension[otherId][application-session] ^definition = "The application-session is a process identification value for the user session. It is used to coorelate the activities to that session."
 
-* entity ^slicing.discriminator.type = #type
-* entity ^slicing.discriminator.path = "type"
-* entity ^slicing.rules = #open
+//* entity ^slicing.discriminator.type = #type
+//* entity ^slicing.discriminator.path = "type"
+//* entity ^slicing.rules = #open
 * entity 1..*
 * entity contains 
     patient 1..1 
@@ -199,6 +197,7 @@ CodeSystem: NorwayIdentifierTypes
 Title: "OtherId types for Norway Identifiers"
 Description: "These are additional details about the User asserted in the Token. These are considered part of the agency of the transaction, so each are described in their own .agent element. These are mostly derived off of the SAML attribute name. The code display name is the SAML attribute name."
 * ^caseSensitive = false
+* ^experimental = false
 * #qualification "urn:hso:subject:qualification:id"
 * #national-identifier "urn:hso:subject:national-identifier:id"
 * #application-session "urn:hso:subject:application-session"
@@ -208,6 +207,7 @@ CodeSystem: NorwayAgentTypes
 Title: "Agent types for Norway Tokens"
 Description: "These are additional details about the Agents asserted in the Token. These are considered part of the agency of the transaction, so each are described in their own .agent element. These are mostly derived off of the SAML attribute name. The code display name is the SAML attribute name."
 * ^caseSensitive = false
+* ^experimental = false
 * #user-facility "urn:hso:subject:facility"
 * #user-child-org "urn:hso:subject:child-organization"
 * #user-department "urn:hso:subject:department"
@@ -218,6 +218,7 @@ CodeSystem: NorwayEntityDetailTypes
 Title: "Entity detail types for Norway SAML Token"
 Description: "These are additionl details about the Patient (Resoruce) mentioned in the Token. These are not .agent, as they don't actively participate. They are provided to provide context about the Patient. These are used in the entity.detail as the detail.type, where the value carried in the Token is carried in the detail.value[x]. These are mostly derived off of the SAML attribute name. The code display name is the SAML attribute name."
 * ^caseSensitive = false
+* ^experimental = false
 * #patient-child-organization-id "hso:resource:child-organization:id"
 * #patient-child-organization-name  "hso:resource:child-organization:name"
 * #patient-child-organization-system  "hso:resource:child-organization:system"
